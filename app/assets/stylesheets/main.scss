@@ -9,3 +9,9 @@
 .button {
     margin: .2rem;
 }
+
+.container {
+    @media screen and (max-width: 767px) {
+        padding: 0 0.75rem;
+    }
+}

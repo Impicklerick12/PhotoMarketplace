@@ -12,6 +12,10 @@
           <div class="media-content">
             <p class="title is-4"><%= @profile.name %></p>
             <p class="subtitle is-6">@<%= @profile.name.split.join("_").downcase %></p>
+            <div class="social-links">
+              <a href="<%= @profile.website %>" target="_blank"><i class="fas fa-link" ></i></a>
+              <a href ="<%= @profile.instagram %>" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
             <p class="subtitle is-6"><%= @profile.description %></p>
             <% if @profile.id == current_user.profile.id %>
               <a class="button is-danger is-outlined" <%= link_to 'Create Listing', new_listing_path %></a>

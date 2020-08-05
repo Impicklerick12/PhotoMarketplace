@@ -1,28 +1,30 @@
-<h1>Listings</h1>
+<div class="container">
+  <h1>Listings</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Profile</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @listings.each do |listing| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= listing.title %></td>
-        <td><%= listing.description %></td>
-        <td><%= listing.price %></td>
-        <td><%= link_to 'Show', listing %></td>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Profile</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @listings.each do |listing| %>
+        <tr>
+          <td><%= listing.title %></td>
+          <td><%= listing.description %></td>
+          <td><%= listing.price %></td>
+          <td><%= link_to 'Show', listing %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Listing', new_listing_path %>
+  <br>
+
+  <%= link_to 'New Listing', new_listing_path %>
+</div>

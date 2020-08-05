@@ -19,11 +19,27 @@
           <%= form.text_field :name, class:'input', placeholder:'Name' %>
         </div>
 
-        
-
         <div class="field">
           <%= form.label :photo %>
           <%= form.file_field :photo %>
+        </div>
+
+        <div class="field">
+          <p class="control has-icons-left">
+            <%= form.text_field :instagram, class:'input', placeholder:'Instagram URL', class:'input' %>
+            <span class="icon is-small is-left">
+              <i class="fab fa-instagram"></i>
+            </span>
+          </p>
+        </div>
+
+        <div class="field">
+          <p class="control has-icons-left">
+            <%= form.text_field :website, class:'input', placeholder:'Website URL', class:'input' %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-link"></i>
+            </span>
+          </p>
         </div>
         
         <div class="field">
@@ -34,6 +50,7 @@
         <p class="control">
           <%= form.submit "Create Profile!", class:'button is-primary is-outlined' %>
         </p>
+        <button class="button is-primary"><%= link_to 'Back', profiles_path %></button>
         <% end %>
       </div>
     </div>

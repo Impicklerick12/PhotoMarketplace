@@ -1,0 +1,17 @@
+.profile {
+    .social-links {
+        a {
+            color: hsl(0, 0%, 21%);
+            font-size: 2rem;
+            margin: 0 0.75rem;
+
+            &:hover {
+                color: hsl(348, 100%, 61%)
+            }
+        }
+    }
+    .media {
+        @media screen and (max-width: 767px) {
+        }
+    }
+}
