@@ -1,0 +1,22 @@
+<%= form_with(model: review, local: true) do |form| %>
+
+    <div class="field">
+      <%= form.label :profile_id %>
+      <%= form.text_field :profile_id %>
+    </div>
+
+    <div class="field">
+      <%= form.label :user_id %>
+      <%= form.text_field :user_id %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :review %>
+      <%= form.text_area :review %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+    
+  <% end %>

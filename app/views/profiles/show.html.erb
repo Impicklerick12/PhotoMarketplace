@@ -1,0 +1,103 @@
+<div class="container">
+
+  <section class="profile">
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <%= image_tag profile_photo(@profile), class:'is-rounded' %>
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4"><%= @profile.name %></p>
+            <p class="subtitle is-6">@<%= @profile.name.split.join("_").downcase %></p>
+            <p class="subtitle is-6"><%= @profile.description %></p>
+            <% if @profile.id == current_user.profile.id %>
+              <a class="button is-danger is-outlined" <%= link_to 'Create Listing', new_listing_path %></a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="listings">
+  <h3 class="subtitle is-3"><strong><%= @profile.name %>'s Listings</strong></h3>
+    <% @profile.listings.each do |listing| %>
+      <div class="card">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <p>
+                <strong><%= listing.title %></strong>
+              </p>
+              <p>
+                <%= listing.description %>
+              </p>
+              <p>
+                <strong><%= number_to_currency(listing.price) %></strong>
+              </p>
+              <p>
+                <%= listing.created_at.strftime("Created on: %B %d, %Y")%>
+              </p>
+            </div>
+            <div class="media-right">
+              <% if listing.category_id != nil %>
+                <button class="button is-primary is-rounded is-outlined category-icon">
+                  <span class="icon">
+                    <i class="far fa-image">
+                    </i>
+                  </span>
+                  <span><%= listing.category.name %></span>
+                </button>
+              <% else %>
+                <%= %>
+              <% end %>
+              <%= link_to "Show Listing", listing, class:'button is-warning' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @profile.user_id == current_user.id %>
+      <footer class="card-footer">
+        <a class="card-footer-item" <%= link_to 'Edit Profile', edit_profile_path(@profile) %></a>
+        <a class="card-footer-item" <%= link_to 'Delete Profile', @profile, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+      </footer>
+    <% end %>
+  </section>
+
+  <section class="reviews">
+    <div class="card">
+      <div class="card-content">
+        <div class="review-form">
+          <h3 class="subtitle is-3">Leave a review or comment about <strong><%= @profile.name %>!</strong></h3>
+        </div>
+        <h2 class="subtitle is-5"><strong><%= @profile.reviews.count %></strong> Comments</h2>
+      </div>
+      <%= render "shared/review_form" %>
+    </div>
+    
+    <div class="card">
+      <% @reviews.each do |review| %>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+                <%= image_tag review_photo(review), class:'is-rounded' %>
+            </figure>
+          </div>
+          <div class="media-content">
+            <p><strong><%= review.user.email %></strong></p>
+            <p style="background-color: #f5f5f5"><%= review.review %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </section>
+
+  <a class="button is-danger is-outlined" <%= link_to 'Back', profiles_path %></a>
+</div>

@@ -1,0 +1,45 @@
+<section class="hero is-medium is-info is-bold">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        Log In
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="form">
+  <div class="container">
+    <div class="columns is-centered"">
+      <div class="column is-half">
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'input', placeholder:'Email' %>
+          </div>
+
+          <div class="field">
+            <%= f.password_field :password, autocomplete: "current-password", class:'input', placeholder:'Password' %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="checkbox">
+              <%= f.check_box :remember_me, class:'checkbox' %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+
+
+          <div class="actions">
+            <p class="control">
+                <%= f.submit "Log In", class:'button is-light' %>
+            </p>
+          </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</section>
+

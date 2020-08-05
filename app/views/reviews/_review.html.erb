@@ -1,0 +1,14 @@
+<div class="box">
+    <article class="media">
+        <div class="media-content">
+            <div class="content">
+                <p>
+                    <strong><%= review.user_id.email %>: </strong>
+                    <%= review.review %>
+                </p>
+            </div>
+        </div>
+
+        <%= link_to 'Delete', [review.profile, review], method: :delete, data: { confirm: 'Are you sure?' } %>
+    </article>
+</div>

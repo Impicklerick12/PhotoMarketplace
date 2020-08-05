@@ -1,0 +1,59 @@
+.home {
+    .container {
+        .is-primary,.is-warning,.is-light,.is-danger {
+            background-color: grey;
+            .hero-body {
+                padding: 2rem;
+                .columns {
+                    align-items: center;
+                    .column.is-half.image {
+                        margin-left: 7rem;
+                    }
+                    .column.is-half.content {
+                        margin-left: -7rem;
+                        .title,.subtitle {
+                            color: black;
+                        }
+                    }
+                    .column.is-half.image.second {
+                        margin-left: -7rem;
+                    }
+                    .column.is-half.content.second {
+                        margin-left: 7rem;
+                        z-index: 1;
+                        .title,.subtitle {
+                            color: black;
+                        }
+                    }
+                }
+                @media screen and (max-width: 767px) {
+                    display: block;
+                    padding: 0;
+                    .columns {
+                        align-items: center;
+                        .column.is-half.image,.content {
+                            margin: 0;
+                            .title,.subtitle {
+                                color: black;
+                            }
+                        }
+                        .column.is-half.image.second {
+                            margin-left: -7rem;
+                        }
+                        .column.is-half.content.second {
+                            margin-left: 7rem;
+                            z-index: 1;
+                            .title,.subtitle {
+                                color: black;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.hero.is_primary.title {
+    color: black;
+}

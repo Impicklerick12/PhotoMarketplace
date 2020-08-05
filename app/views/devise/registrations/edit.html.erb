@@ -1,0 +1,53 @@
+<section class="hero is-medium is-info is-bold">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        Edit User
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="form">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+          <div class="field">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'input', placeholder:'Email' %>
+          </div>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <div class="field">
+            <%= f.password_field :current_password, autocomplete: "current-password", class:'input', placeholder:'Current Password' %>
+          </div>
+
+          <div class="field">
+            <%= f.password_field :password, autocomplete: "new-password", class:'input', placeholder:'New Password (Leave blank if you do not wish to change it)' %>
+            <% if @minimum_password_length %>
+              <br />
+              <em><%= @minimum_password_length %> characters minimum</em>
+            <% end %>
+          </div>
+
+          <div class="field">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'input', placeholder:'New Password Confirmation' %>
+          </div>
+          
+          <div class="update-button">
+              <%= f.submit "Update", class:'button is-primary is-outlined' %>
+          </div>
+        <% end %>
+
+        <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:'button is-danger is-outlined' %>
+
+        <%= link_to "Back", :back, class:'button is-link is-outlined' %>
+      </div>
+    </div>
+  </div>
+</section>

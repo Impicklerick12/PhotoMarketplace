@@ -1,0 +1,23 @@
+<section class="form">
+    <div class="card">
+        <div class="card-content">
+            <div class="media">
+                <div class="media-left">
+                    <figure class="image is-48x48">
+                        <%= image_tag image_url("user.png"), class:'is-rounded' %>
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <%= form_with model: [@profile, @review], local: true do |f| %>
+                    <div class="field">
+                        <%= f.text_area :review, class:'textarea' %>
+                    </div>
+                    <div class="actions">
+                        <%= f.submit "Save", class:'button is-primary is-outlined' %>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

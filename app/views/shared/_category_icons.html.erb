@@ -1,0 +1,19 @@
+<% @profile.listings.each do |listing| %>
+    <% if listing.category_id != nil && listing.category.name == "Portrait" %>
+    <button class="button is-primary is-rounded is-outlined">
+    <span class="icon">
+    <i class="fas fa-portrait"></i>
+    </span>
+    <span>Something else</span>
+</button>    
+    <% elsif listing.category_id != nil && listing.category.name == "Landscape"%>
+    <button class="button is-primary is-rounded is-outlined">
+    <span class="icon">
+    <i class="fas fa-portrait"></i>
+    </span>
+    <span>Portrait</span>
+</button>
+    <% else listing.category_id == nil %>
+            <%= %>
+    <% end %>
+<% end %>

@@ -1,0 +1,41 @@
+<section class="form">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <%= form_with(model: profile, local: true) do |form| %>
+          <% if profile.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+              <ul>
+                <% profile.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+        <div class="field">
+          <%= form.text_field :name, class:'input', placeholder:'Name' %>
+        </div>
+
+        
+
+        <div class="field">
+          <%= form.label :photo %>
+          <%= form.file_field :photo %>
+        </div>
+        
+        <div class="field">
+          <%= form.text_area :description, class:'textarea', placeholder:'Tell us a bit about yourself and your experience!', rows:'10' %>
+        </div>
+        
+        <div class="field">
+        <p class="control">
+          <%= form.submit "Create Profile!", class:'button is-primary is-outlined' %>
+        </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

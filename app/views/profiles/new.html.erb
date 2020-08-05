@@ -1,0 +1,15 @@
+<section class="hero is-medium is-info is-bold">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        New Profile
+      </h1>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <%= render 'form', profile: @profile %>
+
+  <%= link_to 'Back', profiles_path %>
+</div>

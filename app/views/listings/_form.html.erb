@@ -1,0 +1,49 @@
+<section class="form">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <%= form_with(model: listing, local: true) do |form| %>
+          <% if listing.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+              <ul>
+                <% listing.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+            <%= form.label :title %>
+            <%= form.text_field :title, class:'input', placeholder:'Title' %>
+          </div>
+
+          <div class="field">
+            <%= form.label :description %>
+            <%= form.text_area :description, class:'input', placeholder:'Description', class:'textarea' %>
+          </div>
+
+          <div class="field">
+            <%= form.label :price %>
+            <%= form.text_field :price, class:'input', placeholder:'Price' %>
+          </div>
+          
+          <div class="field">
+            <%= form.label :category_id %>:
+            <% categories_array = Category.all.map { |category| [category.name, category.id] } %>
+            <%= form.select(:category_id, options_for_select(categories_array), class:'select') %>
+          </div>
+
+          <div class="field">
+            <p class="control">
+              <%= form.submit "Create!", class:'button is-primary is-outlined' %>
+            </p>
+          </div>
+          <%= link_to 'Back', listings_path, class:'button is-link is-outlined' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
