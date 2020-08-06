@@ -25,8 +25,12 @@ class ListingsController < ApplicationController
 
   # GET /listings/1/edit
   def edit
-    if @listing.profile_id != current_user.profile.id
-      redirect_to root_path 
+    if Profile.exists?(user_id: current_user.id)
+      if current_user.profile.id != @listing.profile_id
+        redirect_to profiles_path
+      end
+    else
+      redirect_to profiles_path
     end
   end
 

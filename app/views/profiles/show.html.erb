@@ -17,7 +17,7 @@
               <a href ="<%= @profile.instagram %>" target="_blank"><i class="fab fa-instagram"></i></a>
             </div>
             <p class="subtitle is-6"><%= @profile.description %></p>
-            <% if @profile.id == current_user.profile.id %>
+            <% if current_photographer(@profile) == true %>
               <a class="button is-danger is-outlined" <%= link_to 'Create Listing', new_listing_path %></a>
             <% end %>
           </div>
@@ -62,14 +62,13 @@
             </div>
           </div>
         </div>
+        <% if @profile.user_id == current_user.id %>
+          <footer class="card-footer">
+            <a class="card-footer-item" <%= link_to 'Edit Profile', edit_profile_path(@profile) %></a>
+            <a class="card-footer-item" <%= link_to 'Delete Profile', @profile, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+          </footer>
+        <% end %>
       </div>
-    <% end %>
-
-    <% if @profile.user_id == current_user.id %>
-      <footer class="card-footer">
-        <a class="card-footer-item" <%= link_to 'Edit Profile', edit_profile_path(@profile) %></a>
-        <a class="card-footer-item" <%= link_to 'Delete Profile', @profile, method: :delete, data: { confirm: 'Are you sure?' } %></a>
-      </footer>
     <% end %>
   </section>
 
@@ -94,7 +93,7 @@
             </figure>
           </div>
           <div class="media-content">
-            <p><strong><%= review.user.email %></strong></p>
+            <p><strong><%= review_name(review) %></strong></p>
             <p style="background-color: #f5f5f5"><%= review.review %></p>
           </div>
         </div>

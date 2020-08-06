@@ -41,7 +41,7 @@
               <%= form.submit "Create!", class:'button is-primary is-outlined' %>
             </p>
           </div>
-          <%= link_to 'Back', listings_path, class:'button is-link is-outlined' %>
+          <%= link_to 'Back', profile_path(current_user.profile.id), class:'button is-primary is-outlined' %>
         <% end %>
       </div>
     </div>
