@@ -17,7 +17,7 @@
               <%= @listing.created_at.strftime("Created on: %B %d, %Y")%>
             </p>
             <% if current_photographer(@listing) == true %>
-                <td><%= link_to 'Edit', edit_listing_path(@listing), class:'button is-warning' %></td>
+                <td><%= link_to 'Edit', edit_listing_path(@listing), class:'button is-info' %></td>
                 <td><%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' }, class:'button is-danger' %></td>
             <% end %>
           </div>
@@ -37,7 +37,7 @@
         </div>
       </div>
     </div>
-    <%= link_to 'Back', profile_path(@listing.profile_id), class:'button is-primary is-outlined' %>
+    <%= link_to 'Back', profile_path(@listing.profile_id), class:'button is-info is-outlined' %>
   </section>
 </div>
 
