@@ -7,7 +7,7 @@ class ErrorsController < ApplicationController
     render status: 422
   end
 
-  # def internal_error
-  #   render status: 500
-  # end
+  def internal_error
+    render status: 500
+  end
 end
