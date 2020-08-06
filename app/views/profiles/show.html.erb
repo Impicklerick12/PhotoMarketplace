@@ -27,6 +27,12 @@
           </div>
         </div>
       </div>
+      <% if @profile.user_id == current_user.id %>
+          <footer class="card-footer">
+            <a class="card-footer-item" <%= link_to 'Edit Profile', edit_profile_path(@profile) %></a>
+            <a class="card-footer-item" <%= link_to 'Delete Profile', @profile, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+          </footer>
+        <% end %>
     </div>
   </section>
 
@@ -66,24 +72,14 @@
             </div>
           </div>
         </div>
-        <% if @profile.user_id == current_user.id %>
-          <footer class="card-footer">
-            <a class="card-footer-item" <%= link_to 'Edit Profile', edit_profile_path(@profile) %></a>
-            <a class="card-footer-item" <%= link_to 'Delete Profile', @profile, method: :delete, data: { confirm: 'Are you sure?' } %></a>
-          </footer>
-        <% end %>
       </div>
     <% end %>
   </section>
 
   <section class="reviews">
+    <h3 class="subtitle is-3">Leave a review or comment about <strong><%= @profile.name %>!</strong></h3>
+    <h2 class="subtitle is-5"><strong><%= @profile.reviews.count %></strong> Comments</h2>
     <div class="card">
-      <div class="card-content">
-        <div class="review-form">
-          <h3 class="subtitle is-3">Leave a review or comment about <strong><%= @profile.name %>!</strong></h3>
-        </div>
-        <h2 class="subtitle is-5"><strong><%= @profile.reviews.count %></strong> Comments</h2>
-      </div>
       <%= render "shared/review_form" %>
     </div>
     

@@ -27,7 +27,7 @@
         <div class="navbar-item">
           <div class="buttons">
             <% if user_signed_in? && !Profile.exists?(user_id: current_user.id)%>
-              <a class="button is-info is-outlined" <%= link_to "Create Photographer Profile!", new_profile_path %></a>
+              <a class="button is-danger is-outlined" <%= link_to "Create Photographer Profile!", new_profile_path %></a>
             <% elsif user_signed_in? && Profile.exists?(user_id: current_user.id)%>
               <a class="button is-danger is-outlined" <%= link_to "View My Profile", profile_path(current_user.profile.id) %></a>
             <% end %>
