@@ -14,7 +14,7 @@
               <strong><%= number_to_currency(@listing.price) %></strong>
             </p>
             <p>
-              <%= @listing.created_at.strftime("Created on: %B %d, %Y")%>
+              <%= @listing.created_at.strftime("Created: %B %d, %Y")%>
             </p>
             <% if current_photographer(@listing) == true %>
                 <td><%= link_to 'Edit', edit_listing_path(@listing), class:'button is-info' %></td>
