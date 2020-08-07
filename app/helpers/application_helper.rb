@@ -30,7 +30,17 @@ module ApplicationHelper
         end
     end
 
-    def current_photographer(model)
+    def current_photographer_listing(model)
+        if Profile.exists?(user_id: current_user.id)
+            if model.profile.id == current_user.profile.id
+                return true
+            else
+                return false
+            end
+        end
+    end
+
+    def current_photographer_profile(model)
         if Profile.exists?(user_id: current_user.id)
             if model.id == current_user.profile.id
                 return true
@@ -40,3 +50,4 @@ module ApplicationHelper
         end
     end
 end
+

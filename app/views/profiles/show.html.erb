@@ -5,8 +5,8 @@
       <div class="card-content">
         <div class="media">
           <div class="media-left">
-            <figure class="image is-48x48">
-              <%= image_tag profile_photo(@profile), class:'is-rounded' %>
+            <figure class="image is-64x64">
+              <%= image_tag profile_photo(@profile), class:'is-rounded profile-image' %>
             </figure>
           </div>
           <div class="media-content">
@@ -21,7 +21,7 @@
               <% end %>
             </div>
             <p class="subtitle is-6"><%= @profile.description %></p>
-            <% if current_photographer(@profile) == true %>
+            <% if current_photographer_profile(@profile) == true %>
               <a class="button is-danger is-outlined" <%= link_to 'Create Listing', new_listing_path %></a>
             <% end %>
           </div>
@@ -88,8 +88,8 @@
       <div class="card-content">
         <div class="media">
           <div class="media-left">
-            <figure class="image is-48x48">
-                <%= image_tag review_photo(review), class:'is-rounded' %>
+            <figure class="image is-64x64">
+                <%= image_tag review_photo(review), class:'is-rounded profile-image' %>
             </figure>
           </div>
           <div class="media-content">

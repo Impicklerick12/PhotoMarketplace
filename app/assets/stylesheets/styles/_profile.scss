@@ -15,3 +15,9 @@
         }
     }
 }
+
+.is-rounded.profile-image {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+}

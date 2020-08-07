@@ -27,7 +27,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1/edit
   def edit
     if Profile.exists?(user_id: current_user.id)
-      if current_user.profile.id != @profile.user_id
+      if current_user.id != @profile.user_id
         redirect_to profiles_path
       end
     else

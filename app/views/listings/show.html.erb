@@ -16,10 +16,11 @@
             <p>
               <%= @listing.created_at.strftime("Created: %B %d, %Y")%>
             </p>
-            <% if current_photographer(@listing) == true %>
+            <% if current_photographer_listing(@listing) == true %>
                 <td><%= link_to 'Edit', edit_listing_path(@listing), class:'button is-info' %></td>
                 <td><%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' }, class:'button is-danger' %></td>
             <% end %>
+            
           </div>
           <div class="media-right">
             <% if @listing.category_id != nil %>
