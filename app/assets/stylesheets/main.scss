@@ -35,3 +35,9 @@
         }
     }
 }
+
+.errors {
+    .hero.is-error.is-fullheight {
+        background: linear-gradient(to right, rgb(255, 87, 87) 0%, rgb(255, 145, 77) 100%);
+    }
+}
