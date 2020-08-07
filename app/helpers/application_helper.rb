@@ -1,5 +1,6 @@
 module ApplicationHelper
-
+    include Pagy::Frontend
+    
     def profile_photo(profile)
         if profile.photo.attached?
             profile.photo

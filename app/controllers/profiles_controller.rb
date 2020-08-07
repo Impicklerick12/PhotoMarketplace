@@ -1,11 +1,12 @@
 class ProfilesController < ApplicationController
+  include Pagy::Backend
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except:[:home]
 
   # GET /profiles
   # GET /profiles.json
   def index
-    @profiles = Profile.all
+    @pagy, @profiles = pagy(Profile.all, items: 12)
   end
 
   # GET /profiles/1
