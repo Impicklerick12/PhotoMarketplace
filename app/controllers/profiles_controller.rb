@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-    @pagy, @profiles = pagy(Profile.all.with_attached_photo.order("created_at DESC"), items: 12)
+    @pagy, @profiles = pagy(Profile.all.with_attached_photo.order("created_at ASC"), items: 12)
   end
 
   # GET /profiles/1
