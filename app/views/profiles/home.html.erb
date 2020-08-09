@@ -87,9 +87,12 @@
         <section class="categories">
             <section class="hero is-danger">
                 <div class="hero-body">
+                    <div class="home-title">
+                        <h1 class="title">Categories</h1>
+                    </div>
                     <div class="columns category">
                     <% @home_categories.each do |category| %>
-                        <div class="column is-one-fifth has-text-centered category">
+                        <div class="column is-2 has-text-centered category">
                             <figure class="image">
                                 <img src="https://bulma.io/images/placeholders/128x128.png">
                             </figure>
@@ -98,6 +101,14 @@
                             </div>
                         </div>
                     <% end %>
+                        <div class="column is-2 has-text-centered category">
+                            <figure class="image">
+                                <img src="https://bulma.io/images/placeholders/128x128.png">
+                            </figure>
+                            <div class="category-name">
+                                <h2 class="subtitle">and many more..</h2>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
