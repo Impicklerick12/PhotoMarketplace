@@ -6,12 +6,13 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-    @pagy, @profiles = pagy(Profile.all, items: 12)
+    @pagy, @profiles = pagy(Profile.all.with_attached_photo.order("created_at DESC"), items: 12)
   end
 
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @profile = Profile.includes(:listings, :reviews).find(params[:id])
     @review = Review.new
     @reviews = @profile.reviews
   end

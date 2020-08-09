@@ -11,6 +11,7 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @listing = Listing.includes(:category).find(params[:id])
   end
 
   # GET /listings/new
