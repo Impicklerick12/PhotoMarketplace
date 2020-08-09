@@ -3,6 +3,10 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except:[:home]
 
+  def home
+    @home_profiles = Profile.order("created_at ASC").limit(3)
+    @home_categories = Category.order("RANDOM()").limit(5)
+  end
   # GET /profiles
   # GET /profiles.json
   def index

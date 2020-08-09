@@ -1,31 +1,32 @@
 .home {
     .container {
-        .is-primary,.is-warning,.is-light,.is-danger {
-            background-color: grey;
+        .overlapping-content {
             .hero-body {
                 padding: 2rem;
                 .columns {
                     align-items: center;
+                    
                     .column.is-half.image {
-                        margin-left: 7rem;
+                        margin-left: 7%;
                     }
                     .column.is-half.content {
-                        margin-left: -7rem;
+                        margin-left: -10%;
                         .title,.subtitle {
                             color: black;
                         }
                     }
                     .column.is-half.image.second {
-                        margin-left: -7rem;
+                        margin-left: 45%;
                     }
                     .column.is-half.content.second {
-                        margin-left: 7rem;
+                        margin-left: -90%;
                         z-index: 1;
                         .title,.subtitle {
                             color: black;
                         }
                     }
                 }
+
                 @media screen and (max-width: 767px) {
                     display: block;
                     padding: 0;
@@ -50,6 +51,53 @@
                     }
                 }
             }
+        }
+
+        .featured-photographers {
+            .hero-body {
+                padding: 1rem 1rem 2rem;
+                .columns.profile {
+
+                    .column {
+                        padding: 0;
+
+                        .card {
+                            height: 300px;
+                            border-radius: 0px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .categories {
+            .hero-body {
+                padding: 0;
+                .columns.category {
+                    justify-content: space-between;
+                    margin: 0;
+
+                    .column.category {
+                        justify-content: center;
+                        padding: 0;
+
+                        .image {
+                            width: 100%;
+                            position: relative;
+                        }
+                        .category-name {
+                            top: 50%;
+                            left: 50%;
+                            z-index: 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        .home-title {
+            text-align: center;
+            margin: 2rem 0;
         }
     }
 }
