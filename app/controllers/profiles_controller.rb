@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.includes(:listings, :reviews).find(params[:id])
     @review = Review.new
-    @reviews = @profile.reviews
+    # @reviews = @profile.reviews
   end
 
   # GET /profiles/new
