@@ -119,5 +119,6 @@ Rails.application.configure do
     password:ENV["GMAIL_PASSWORD"]
   }
   # doesn't have to be Heroku, but you get the idea.
-  config.action_mailer.default_url_options = { :host => 'https://fathomless-oasis-65004.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: 'https://fathomless-oasis-65004.herokuapp.com/' }
+
 end
