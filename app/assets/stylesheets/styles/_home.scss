@@ -112,7 +112,7 @@
 
                         .image {
                             max-width: 224px;
-                            position: relative;
+                            object-fit: cover;
                         }
                         .category-name {
                             top: 50%;

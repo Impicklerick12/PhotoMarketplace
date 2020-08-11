@@ -61,3 +61,4 @@ gem 'populator'
 # https://github.com/stympy/faker
 gem 'faker'
 gem 'pagy'
+gem 'dotenv-rails'
