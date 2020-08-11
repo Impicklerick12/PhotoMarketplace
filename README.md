@@ -52,6 +52,10 @@ The pagy gem was used to limit the number of profiles and listings shown on each
 
 Eager loading was implemented to improve the N+1 query issues. By using the includes and find methods, and specifying any relations, we are able to limit the database quiries and find the exact matching data point from the params.
 
+##### Future Implementations
+
+In the near future there are several functions that I would love to implement in PhotoPlace. The first is the search function, which allows a user to easily search through the profiles, listings and categories.
+
 ##### Sitemap
 ![PhotoPlace Sitemap](docs/photoplace_sitemap.png "Portfolio Sitemap")
 
@@ -204,9 +208,10 @@ Lastly, each listing that is created has relations to multiple entities, such as
 
 #### Database Schema Design
 
-Below is the final version of my database ERD. Unfortunately as I was unable to implement stripe into my application, the orders table was never created. Also the implementation of the social media links was quite a late addition also, so I simply migrated new columns into the Profile table to include the addition of the users website and instagram URLs. In the future I would prefer to revert this back to a Socials table which can contain any links to the users social media URLS, allowing other interested users to browse their complete body of work.
+Below is the final version of my database ERD and schema. Unfortunately as I was unable to implement stripe into my application, the orders table was never created. Also the implementation of the social media links was quite a late addition also, so I simply migrated new columns into the Profile table to include the addition of the users website and instagram URLs. In the future I would prefer to revert this back to a Socials table which can contain any links to the users social media URLS, allowing other interested users to browse their complete body of work.
 
 ![PhotoPlace ERD](docs/photoplace_erd.png) 
+![PhotoPlace Schema](docs/schema.png) 
 
 ##### Task Allocation
 
