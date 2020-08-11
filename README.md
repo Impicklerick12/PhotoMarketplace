@@ -60,7 +60,20 @@ In the near future there are several functions that I would love to implement in
 ![PhotoPlace Sitemap](docs/photoplace_sitemap.png "Portfolio Sitemap")
 
 ##### Screenshots
-![Some Screenie](docs/some.png)
+<p float="left">
+  <img src="docs/screenshot7.png" width="300" /> 
+  <img src="docs/screenshot4.png" width="300" />
+  <img src="docs/screenshot3.png" width="300" />
+</p>
+<p float="left">
+  <img src="docs/screenshot2.png" width="300" /> 
+  <img src="docs/screenshot1.png" width="300" />
+  <img src="docs/screenshot6.png" width="300" />
+</p>
+
+![Home Desktop Screenshot](docs/screenshot8.png "Home Desktop Screenshot")
+![Profile Show Screenshot](docs/screenshot5.png "Profile Show Screenshot")
+![Profile Index Screenshot](docs/screenshot9.png "Profile Index Screenshot")
 
 ##### Target audience
 PhotoPlace is initially targeted at photographers looking to display their professional profiles and services. The appeal of PhotoPlace is a one-stop-shop for photographers, instead of having to use several different services and apps to provide information and advertising to potential clients. PhotoPlace relies on photographers creating detailed profile pages, and populating them with listings containing the services they provide. The second target audience is the general population who are searching for photographers to work with, searching for services such as product or wedding photography. This audience is able to interact with photographers, view their services, and leave reviews relating to their experiences. When PhotoPlace grows, it could accommodate a number of creative services such as videography, graphic design, and even software development.
