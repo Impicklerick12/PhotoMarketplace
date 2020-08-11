@@ -54,7 +54,13 @@ Eager loading was implemented to improve the N+1 query issues. By using the incl
 
 ##### Future Implementations
 
-In the near future there are several functions that I would love to implement in PhotoPlace. The first is the search function, which allows a user to easily search through the profiles, listings and categories.
+In the near future there are several functions that I would love to implement in PhotoPlace. The first is the search function, which allows a user to easily search through the profiles, listings and categories. This would improve the performance of the app as the user base grows, and allow for easy transitions between pages.
+
+Secondly I would like to implement Stripe, the payment getaway so that users are actually able to purchase listings and meet with photographers in real life to collect their purchases. This would also involve creating new database tables for orders, where users are able to place multiple orders into their 'cart' and then checkout to pay for all the listings in their order.
+
+Finally, I will continually work to scale the app. I feel as though it could transform into a social media platform of sorts, where profiles can connect with others and create posts which could be anything from text to images or videos. A place where creatives are able to post and also sell their services is the end goal.
+
+
 
 ##### Sitemap
 ![PhotoPlace Sitemap](docs/photoplace_sitemap.png "Portfolio Sitemap")
