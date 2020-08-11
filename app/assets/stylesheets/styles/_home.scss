@@ -9,7 +9,7 @@
                     .column.is-half.image {
                         margin-left: 7%;
 
-                        @media screen and (min-width: 768px) and (max-width: 1024px) {
+                        @media screen and (min-width: 768px) and (max-width: 1023px) {
                             margin-left: 0;
                         }
                     }
@@ -23,14 +23,14 @@
                                 color: black;
                             }
                         }
-                        @media screen and (min-width: 768px) and (max-width: 1024px) {
+                        @media screen and (min-width: 768px) and (max-width: 1023px) {
                             margin-left: 0;
                         }
                     }
                     .column.is-half.image.second {
                         margin-left: 45%;
 
-                        @media screen and (min-width: 768px) and (max-width: 1024px) {
+                        @media screen and (min-width: 768px) and (max-width: 1023px) {
                             margin-left: 0;
                         }
                     }
@@ -41,7 +41,7 @@
                         .title,.subtitle {
                             color: black;
                         }
-                        @media screen and (min-width: 768px) and (max-width: 1024px) {
+                        @media screen and (min-width: 768px) and (max-width: 1023px) {
                             margin-left: 0;
                         }
                     }

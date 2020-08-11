@@ -1,7 +1,9 @@
 # PhotoPlace
-by Tyler Hall
-
 ## The one-stop-shop for all your Photography needs!
+
+![PhotoPlace Logo](docs/photoplace_logo.png "PhotoPlace Logo")
+
+by Tyler Hall
 
 My Depolyed App - [https://fathomless-oasis-65004.herokuapp.com/](https://fathomless-oasis-65004.herokuapp.com/ "PhotoPlace Marketplace")  
 Link to my GitHub Repo - [https://github.com/Impicklerick12/PhotoMarketplace](https://github.com/Impicklerick12/PhotoMarketplace "Marketplace App GitHub Repo")
@@ -13,7 +15,42 @@ PhotoPlace was developed out of a need for people searching for photographers, b
 PhotoPlace aims to connect photographers and customers. It’s purpose is to solve two common problems when acquiring photography services, the difficulty in finding an appropriate photographer, and on the other side of the coin, the difficulty in finding work for freelance photographers. PhotoPlace allows photographers to post ‘listings’, which can be any form of service they wish to provide, such as a portrait photography session, a workshop or even a piece of art. Instead of shopping and browsing across a variety of apps and websites, PhotoPlace is a one-stop-shop for photography services. Users are able to search for specific types of listings, instead of having to ask a photographer what their rate is for a certain service, it can be laid out in the form of a listing with a set price. 
 
 ##### Functionality / features
-PhotoPlace allows users the choice to create a profile if they wish, which represents a photographer's profile page. If they are simply browsing and are looking for a photographer to work with, they do not need to and can still perform actions on the site. Users are only able to create one profile, which can contain information about themselves and their professional photography experience such as their name, social media links and a bio. Profiles are able to create many listings, which are essentially products or services that the photographer provides. These listings are editable only by the profile user, and contain information relevant to the service such as the description, category of service, and price. Within each profile page (show page), there is a reviews section at the bottom. This was created so that users and photographers alike were able to leave comments and reviews about profiles, giving real feedback regarding the quality of work that the photographer provides. Finally, there is an area where all of the listings are provided, so that any user is able to filter through them to find their desired category or service. 
+
+* User Authentication
+
+Firstly, anyone looking to view the profiles and listings on PhotoPlace need to sign up using an email and password. Once they sign up they now become a user, and can view all profiles and listings
+
+PhotoPlace allows users the choice to create a profile if they wish, which represents a photographer's profile page. If they are simply browsing and are looking for a photographer to work with, they do not need to and can still perform actions on the site as a user. 
+
+* Authorisation
+
+Users are only able to create one profile, which can contain information about themselves and their professional photography experience such as their name, social media links and a bio. Profiles are able to create many listings, which are essentially products or services that the photographer provides. These listings are editable only by the profile user, and contain information relevant to the service such as the description, category of service, and price. 
+
+Within each profile page (show page), there is a reviews section at the bottom. This was created so that users and photographers alike were able to leave comments and reviews about profiles, giving real feedback regarding the quality of work that the photographer provides. Finally, there is an area where all of the listings are provided, so that any user is able to filter through them to find their desired category or service. 
+
+* Feature Photographers
+
+The home page contains information regarding the use of the app, as well as a selection of featured photographers. These were created through eager loading, selecting the top 3 profiles.
+
+* Categories
+
+The home page also contains a visualisation of some of the categories that are enabled in the PhotoPlace application. Each listing can be marked with a category, with future implementation including a search function that will show listings for each category.
+
+* Image Upload
+
+Each profile has the ability to upload an image to use as their profile image. This was accomplished using active storage in Rails. This profile image is attached to their profile through the profile model (has_one_attached :photo) and is able to be used throughout the site. When the profile makes a review on any profile, their photo is used, and if they do not have a profile or profile photo, a stock image is attached.
+
+* Reviews
+
+Reviews are attached to a single profile id. So the review routes are nested within the profile routes, where only the create function is enabled. Each review contains information regarding to its columns, including the body of text, the profile id it is attached to, and the user id of the user who placed the review.
+
+* Pagination
+
+The pagy gem was used to limit the number of profiles and listings shown on each index page. Once the user base of the app grows, the index pages can become over populated with data, causing slower performance and loading. By limiting each page to 10 or 12 profiles/listings, we are able to scale the app effectively.
+
+* Eager Loading Principles
+
+Eager loading was implemented to improve the N+1 query issues. By using the includes and find methods, and specifying any relations, we are able to limit the database quiries and find the exact matching data point from the params.
 
 ##### Target audience
 PhotoPlace is initially targeted at photographers looking to display their professional profiles and services. The appeal of PhotoPlace is a one-stop-shop for photographers, instead of having to use several different services and apps to provide information and advertising to potential clients. PhotoPlace relies on photographers creating detailed profile pages, and populating them with listings containing the services they provide. The second target audience is the general population who are searching for photographers to work with, searching for services such as product or wedding photography. This audience is able to interact with photographers, view their services, and leave reviews relating to their experiences. When PhotoPlace grows, it could accommodate a number of creative services such as videography, graphic design, and even software development.
@@ -74,9 +111,46 @@ Elements styled using SCSS, a CSS preprocessor. Utilized partials and universal 
 ![Trello Board Week 2](docs/trello_board_week2.png "Trello Board Week 2")
 ![Trello Board Week 3](docs/trello_board_week3.png "Trello Board Week 3")
 
+##### Task Allocation
+
+**Week One**
+
+* Create wireframes for all pages, in different devise sizes
+* Start Entity Relationship Diagram (ERD)
+* Create Sitemap for application
+
+**Week Two**
+
+* Create new rails app with PostgreSQL database
+* Use devise to create users
+* Generate scaffold to create user profiles, inclding the information contained in that profile (name, description)
+* Connect each profile to only one user (profile_id == current_user.id)
+* Generate scaffold to create listings, including their title, description, price, and profile id
+* Connect each listing to only one profile (profile_id == current_user.id)
+* Implement Bulma for CSS framework
+
+**Week Three**
+
+* Start to style each page with bulma
+* Generate reviews model, to be connected to profiles controller
+* Reviews contain data such as the body of text, profile id, and user id of user placing the review
+* Implement user authorisations, cannot edit/delete/create listings for other profiles
+* Improve navbar to show buttons/links for different users
+* Add new Category table, include name and description
+* Migrate new column to listing table for category id
+* Populate database with categories
+* Create new test profiles, listings (with categories)
+* Bug fixes and styling to all pages
+* Seed database with users and profiles
+* Update ERD with actual tables from schema
+
+
 ## Data Structure
 ##### Entity Relationship Diagram
-![PhotoPlace ERD](docs/photoplace_erd.png)  
+
+Below is my initial visualisation of my ERD for the PhotoPlace diagram. The relationships are defined on the bottom left side of the image, where any foreign keys are matched to their corresponding primary key, and what type of relationship it is. I would love to implement an order function and table, where users are able to select listings and place them into an order, to purchase through the application via stripe payment. 
+
+![PhotoPlace First ERD](docs/erd_first.png)  
 
 ##### The Relations
 
@@ -104,6 +178,11 @@ My **Category** model only has one association, which is has_many :listings. Thi
 
 Finally, my **Review** model includes the belongs_to association with my User and Profile models. This association allows the connection with a profile, which is where the reviews will be displayed, and also to the user who is placing the review. The last association is validates :review, presence: true, allow_blank: false. This association validates that the associated object is present, and also that the provided text field for the review cannot be left blank and submitted. 
 
+#### Database Schema Design
+
+Below is the final version of my database ERD. Unfortunately as I was unable to implement stripe into my application, the orders table was never created. Also the implementation of the social media links was quite a late addition also, so I simply migrated new columns into the Profile table to include the addition of the users website and instagram URLs. In the future I would prefer to revert this back to a Socials table which can contain any links to the users social media URLS, allowing other interested users to browse their complete body of work.
+
+![PhotoPlace ERD](docs/photoplace_erd.png) 
 
 ## User Stories
 * Users can create an account
@@ -143,4 +222,12 @@ Container-based cloud platform used to deploy, manage and host web apps. Free se
 Cloud hosting service for image storing.
 
 ### High Level Look at Various Components
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+##### User authentication
+
+User authentication was neccesary to prevent anyone being able to use the application and access or adjust any records in the database. Devise is an incredibly helpful gem that provides the framework for the authentication, creating the models, views and helpers for us to implement. In my case, I wanted to only allow visitors to the application to access the home page and how this works page. Both these pages describe what the application does, and why you should sign up. If a visitor clicks a link to view deeper into the app, they will be redirected to the sign up page.
+
+##### Authorisation
+
+If authorisation was not implemented in Photoplace, any users would be able to edit listings or profiles of any other users. This would be disastrous. It was essential to only allow users to edit their own information, so statements were used to find out if a user would be able to perform an action. Embedded ruby code consisting of if/else statements were used to check if a user was signed in, and would either display links or not. Helper methods were also implements to make similar checks for profiles and reviews. 
+
