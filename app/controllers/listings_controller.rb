@@ -1,21 +1,22 @@
 class ListingsController < ApplicationController
+
+  # pagy gem for dividing listings across multiple pages.
+  include Pagy::Backend
+
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  # GET /listings
-  # GET /listings.json
   def index
-    @listings = Listing.all
+    @pagy, @listings = pagy(Listing.all, items: 10)
   end
 
-  # GET /listings/1
-  # GET /listings/1.json
   def show
+    # eager loading, only calling for the listing with the id from params, and including the categories
     @listing = Listing.includes(:category).find(params[:id])
   end
 
-  # GET /listings/new
   def new
+    # verifications to check whether user has created a profile first, before creating a listing
     if current_user.profile == nil
       redirect_to new_profile_path, notice: 'You need to create a profile first!'
     else
@@ -24,8 +25,9 @@ class ListingsController < ApplicationController
     end
   end
 
-  # GET /listings/1/edit
   def edit
+    # verifications to check whether user has a profile created
+    # also check whether the listing was created by the current user before they can edit it
     if Profile.exists?(user_id: current_user.id)
       if current_user.profile.id != @listing.profile_id
         redirect_to profiles_path
@@ -35,9 +37,8 @@ class ListingsController < ApplicationController
     end
   end
 
-  # POST /listings
-  # POST /listings.json
   def create
+    # assigning the listing profile id to the current users profile id
     @listing = Listing.new(listing_params)
     @listing.profile_id = current_user.profile.id
 
@@ -52,8 +53,6 @@ class ListingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /listings/1
-  # PATCH/PUT /listings/1.json
   def update
     respond_to do |format|
       if @listing.update(listing_params)
@@ -66,8 +65,6 @@ class ListingsController < ApplicationController
     end
   end
 
-  # DELETE /listings/1
-  # DELETE /listings/1.json
   def destroy
     @listing.destroy
     respond_to do |format|

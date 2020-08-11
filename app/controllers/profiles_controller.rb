@@ -1,28 +1,32 @@
 class ProfilesController < ApplicationController
+  
+  #page gem for diving profiles across multiple pages
   include Pagy::Backend
+
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except:[:home]
+  before_action :authenticate_user!, except:[:home, :how_this_works]
 
   def home
+    # eager loading variables for the home page. limiting the database calls
+
     @home_profiles = Profile.order("created_at ASC").limit(3)
     @home_categories = Category.order("RANDOM()").limit(5)
   end
-  # GET /profiles
-  # GET /profiles.json
+
   def index
     @pagy, @profiles = pagy(Profile.all.with_attached_photo.order("created_at ASC"), items: 12)
   end
 
-  # GET /profiles/1
-  # GET /profiles/1.json
   def show
+    # eager loading, only calling for the profile from the params id, and including the associated listings and reviews
     @profile = Profile.includes(:listings, :reviews).find(params[:id])
     @review = Review.new
     # @reviews = @profile.reviews
   end
 
-  # GET /profiles/new
   def new
+    # verifications to check whether user has already created a profile
+    # if they have, redirect back with the error message
     if Profile.exists?(user_id: current_user.id)
       redirect_to profile_path(current_user.profile.id), notice: 'You already have a profile created!'
     else
@@ -30,8 +34,9 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # GET /profiles/1/edit
   def edit
+    # verifications to check whether user has a profile created
+    # also check whether the profile was created by the current user before they can edit it
     if Profile.exists?(user_id: current_user.id)
       if current_user.id != @profile.user_id
         redirect_to profiles_path
@@ -41,8 +46,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # POST /profiles
-  # POST /profiles.json
   def create
     @profile = Profile.new(profile_params)
     @profile.user_id = current_user.id
@@ -58,8 +61,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /profiles/1
-  # PATCH/PUT /profiles/1.json
   def update
     respond_to do |format|
       if @profile.update(profile_params)
@@ -72,8 +73,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # DELETE /profiles/1
-  # DELETE /profiles/1.json
   def destroy
     @profile.destroy
     respond_to do |format|

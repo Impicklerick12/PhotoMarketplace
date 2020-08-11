@@ -1,8 +1,14 @@
-.profiles {
+.container {
+    .profiles {
     margin: 2rem 0;
 
-    .columns {
-        flex-wrap: wrap;
+        .columns {
+            flex-wrap: wrap;
+        }
+    }
+    
+    @media screen and (max-width: 411px) {
+        width: 90%;
     }
 }
 
