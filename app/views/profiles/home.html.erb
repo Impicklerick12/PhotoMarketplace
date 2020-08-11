@@ -1,7 +1,7 @@
 <section class="home">
     <div class="container home">
         <section class="overlapping-content">
-            <section class="hero is-primary is-large">
+            <section class="hero is-large">
                 <div class="hero-body">
                     <div class="container has-text-centered">
                         <div class="columns">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </section>
-            <section class="hero is-warning is-large">
+            <section class="hero is-large">
                 <div class="hero-body">
                     <div class="container has-text-centered">
                         <div class="columns">
@@ -57,7 +57,7 @@
         </section>
 
         <section class="featured-photographers">
-            <section class="hero is-light">
+            <section class="hero">
                 <div class="hero-body">
                     <div class="home-title">
                         <h1 class="title">Featured Photographers</h1>
@@ -68,6 +68,7 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="media">
+                                    <%= link_to profile do %>
                                         <div class="media-left">
                                             <figure class="image is-64x64">
                                                 <%= image_tag profile_photo(profile), class:'is-rounded profile-image' %>
@@ -77,6 +78,7 @@
                                             <p class="title is-4"><%= profile.name %></p>
                                             <p class="subtitle is-6">@<%= profile.name.split.join("_").downcase %></p>
                                         </div>
+                                    <% end %>
                                     </div>
                                     <div class="content"><%= profile.description %></div>
                                 </div>
@@ -88,8 +90,9 @@
             </section>
         </section>
         <section class="categories">
-            <section class="hero is-danger">
+            <section class="hero">
                 <div class="hero-body">
+                <%= link_to listings_path do %>
                     <div class="home-title">
                         <h1 class="title">Categories</h1>
                     </div>
@@ -143,6 +146,7 @@
                             </div>
                         </div>
                     </div>
+                <% end %>
                 </div>
             </section>
         </section>

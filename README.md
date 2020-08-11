@@ -86,7 +86,9 @@ Elements styled using SCSS, a CSS preprocessor. Utilized partials and universal 
 * Devise - User authentication
 * AWS S3 - Amazon Web Services object storing service for image uploading
 * Bulma - CSS framework
-* Fake - Use fake information such as names and emails to populate the database
+* Faker - Use fake information such as names and emails to populate the database
+* Pagination - To limit results on each index page. Create multiple pages of search results
+* dotenv - Load environment variables from .env into ENV in development
 
 ## User Stories
 * Users can create an account
